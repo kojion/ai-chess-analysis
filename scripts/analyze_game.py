@@ -212,6 +212,18 @@ def find_engine(name):
     return path
 
 
+def resolve_plies(moves, specs):
+    """Turn half-move numbers ("33") or labels ("17.a4", "17...Nd4") into sorted, unique plies."""
+    labels = {row["label"]: row["ply"] for row in moves}
+    plies = set()
+    for spec in specs:
+        ply = int(spec) if spec.isdigit() else labels.get(spec)
+        if ply is None or not 1 <= ply <= len(moves):
+            raise ValueError(f"局面が見つかりません: {spec}（半手番号 1〜{len(moves)}、または 17.a4 / 17...Nd4 の形式）")
+        plies.add(ply)
+    return sorted(plies)
+
+
 def main(argv=None):
     use_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)

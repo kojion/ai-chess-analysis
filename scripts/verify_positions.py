@@ -24,17 +24,6 @@ def boards_before(game):
     return boards
 
 
-def resolve_plies(moves, specs):
-    labels = {row["label"]: row["ply"] for row in moves}
-    plies = set()
-    for spec in specs:
-        ply = int(spec) if spec.isdigit() else labels.get(spec)
-        if ply is None or not 1 <= ply <= len(moves):
-            raise ValueError(f"局面が見つかりません: {spec}（半手番号 1〜{len(moves)}、または 17.a4 / 17...Nd4 の形式）")
-        plies.add(ply)
-    return sorted(plies)
-
-
 def main(argv=None):
     core.use_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -57,7 +46,7 @@ def main(argv=None):
         boards = boards_before(game)
         if len(boards) != len(moves):
             raise ValueError("game.pgn と game.analysis.json の手数が一致しません")
-        plies = resolve_plies(moves, args.positions)
+        plies = core.resolve_plies(moves, args.positions)
         engine_path = core.find_engine(args.engine)
         positions = []
         with chess.engine.SimpleEngine.popen_uci(engine_path) as engine:

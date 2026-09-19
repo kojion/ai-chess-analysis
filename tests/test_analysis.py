@@ -14,6 +14,9 @@ spec.loader.exec_module(a)
 spec = importlib.util.spec_from_file_location("verify", Path(__file__).parents[1] / "scripts/verify_positions.py")
 v = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(v)
+spec = importlib.util.spec_from_file_location("review", Path(__file__).parents[1] / "scripts/render_review.py")
+r = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(r)
 
 
 class AnalysisTests(unittest.TestCase):
@@ -53,14 +56,67 @@ class AnalysisTests(unittest.TestCase):
 
     def test_resolve_plies(self):
         moves = [{"ply": 1, "label": "1.f3"}, {"ply": 2, "label": "1...e5"}, {"ply": 3, "label": "2.g4"}]
-        self.assertEqual(v.resolve_plies(moves, ["2.g4", "1", "1...e5", "3"]), [1, 2, 3])
+        self.assertEqual(a.resolve_plies(moves, ["2.g4", "1", "1...e5", "3"]), [1, 2, 3])
         for bad in ["0", "4", "9.e4", "-1"]:
             with self.assertRaises(ValueError):
-                v.resolve_plies(moves, [bad])
+                a.resolve_plies(moves, [bad])
 
     def test_verify_requires_analyzed_game(self):
         with tempfile.TemporaryDirectory() as temp:
             self.assertEqual(v.main([temp, "1"]), 1)
+
+    def test_render_review(self):
+        after_e4 = chess.Board()
+        after_e4.push_uci("e2e4")
+        after_e5 = after_e4.copy()
+        after_e5.push_uci("e7e5")
+
+        def row(ply, label, board, uci, san, best=None):
+            item = {"ply": ply, "label": label, "played_uci": uci, "played_san": san, "fen_before": board.fen()}
+            if best:
+                item["deep"] = {"candidates": [{"pv_uci": [best]}]}
+            return item
+
+        moves = [row(1, "1.e4", chess.Board(), "e2e4", "e4", "d2d4"),   # played != best: red + green
+                 row(2, "1...e5", after_e4, "e7e5", "e5", "e7e5"),      # played == best: green only
+                 row(3, "2.Nf3", after_e5, "g1f3", "Nf3")]               # no analysis: red only
+        red, green, blue = "#882020", "#15781B", "#003088"
+
+        def arrows(svg):
+            return svg.count('class="arrow"') // 2
+
+        with tempfile.TemporaryDirectory() as temp:
+            game = Path(temp)
+            (game / "game.analysis.json").write_text(json.dumps({"game": {"moves": moves}}), encoding="utf-8")
+            images = game / "images"
+
+            def svg(number):
+                return (images / f"review-{number:02}.svg").read_text(encoding="utf-8")
+
+            self.assertEqual(r.main([str(game), "1.e4", "1...e5", "3", "--orientation", "black"]), 0)
+            first = svg(1)
+            self.assertEqual([arrows(svg(n)) for n in (1, 2, 3)], [2, 1, 1])
+            self.assertTrue(red in first and green in first)
+            self.assertTrue(red not in svg(2) and green in svg(2))
+            self.assertTrue(red in svg(3) and green not in svg(3))
+            for path in images.glob("*.svg"):
+                self.assertNotIn(b"\r", path.read_bytes())
+            # Existing figures are protected unless --force is given.
+            self.assertEqual(r.main([str(game), "1.e4"]), 1)
+            self.assertEqual(r.main([str(game), "1.e4", "--force", "--arrow", "1.e4:g1f3"]), 0)
+            self.assertEqual(arrows(svg(1)), 3)
+            self.assertIn(blue, svg(1))
+            self.assertNotEqual(svg(1), first)  # white orientation differs from black
+            # Older reviews named the candidates "lines"; a re-check overrides the automatic analysis.
+            (game / "verification.analysis.json").write_text(
+                json.dumps({"positions": [{"ply": 3, "lines": [{"pv_uci": ["f1c4"]}]}]}), encoding="utf-8")
+            self.assertEqual(r.main([str(game), "3", "--start", "9"]), 0)
+            self.assertEqual(arrows(svg(9)), 2)
+            # Bad input.
+            self.assertEqual(r.main([str(game), "1.e4", "--force", "--arrow", "3:g1f3"]), 1)
+            self.assertEqual(r.main([str(game), "1.e4", "--force", "--arrow", "1.e4:zz99"]), 1)
+            self.assertEqual(r.main([str(game), "1.e4", "--force", "--arrow", "1.e4:g1f3:not a color"]), 1)
+            self.assertEqual(r.main([str(game / "missing"), "1"]), 1)
 
     @unittest.skipUnless(shutil.which(os.environ.get("STOCKFISH_PATH", "stockfish")), "Stockfish required")
     def test_real_engine_and_cache(self):

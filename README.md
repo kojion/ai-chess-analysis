@@ -82,6 +82,16 @@ CLIは計算根拠・局面図・事実中心の日本語下書きを作成し�
 
 局面は半手番号（`33`）または手の表記（`17.a4`、黒の手は `17...Nd4`）で指定します。結果は `verification.analysis.json` に保存され、構造は `game.analysis.json` の `deep` と同じです（`candidates`・`played`・`metrics`）。実行のたびにファイル全体が上書きされるため、必要な局面をまとめて指定してください。`--seconds`（既定6秒）、`--multipv`（既定4）、`--engine`、`--threads`、`--hash` で変更できます。Windowsでは `.venv\Scripts\python.exe scripts\verify_positions.py ...` に読み替えてください。
 
+## 記事用の局面図を作る
+
+自動生成される図（`images/position-NN.svg`）とは別に、記事に載せる局面を選んで図を作れます。実戦手は赤、最善候補は緑の矢印で描き、実戦手が最善なら緑だけにします。最善候補は、あれば `verification.analysis.json`、なければ `game.analysis.json` の詳細解析から取ります。
+
+```bash
+.venv/bin/python scripts/render_review.py output/my-game/game-001 17.a4 17...Nd4 19...f5 --orientation black --arrow 19...f5:d4f3:blue
+```
+
+図は、指定した局面を手数順に `images/review-01.svg` から保存します。`--arrow 局面:UCI[:色]` で説明用の矢印を足せます（色の既定は青。複数指定可）。既存の図は `--force` を付けない限り上書きしません。あとから図を足すときは `--start 6` のように番号を指定してください。Windowsでは `.venv\Scripts\python.exe scripts\render_review.py ...` に読み替えてください。
+
 ## 探索と設定
 
 - 全局面: 1探索0.15秒。期待スコアの低下とメイトの変化から候補を抽出。
