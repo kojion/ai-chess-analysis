@@ -6,6 +6,7 @@ PGNをローカルのStockfishで解析し、Codex / Claude Codeで日本語の�
 
 - [町田シルバーウィークオープン：Le Tri Khoa戦・白番（2026年9月19日）](output/2026-09-19-machida-le-tri-khoa/game-001/article.md) — 王手の順番と、クイーンを縛るビショップを振り返ります。
 - [町田シルバーウィークオープン：Vyom Walia戦・黒番（2026年9月19日）](output/2026-09-19-machida-walia/game-001/article.md) — 局面図5枚付き。中央の前進から昇格メイトまでを振り返ります。
+- [lichess：Harshit27092018戦・黒番（2026年9月19日）](output/2026-09-19-lichess-harshit27092018/game-001/article.md) — 局面図5枚付き。白の17.a4をとがめた17...Nd4と、勝勢での19...Bc5を振り返ります。
 
 解析結果と完成した解説は `output/<対局名>/game-NNN/` にまとめて保存します。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
 
