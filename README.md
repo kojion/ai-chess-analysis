@@ -2,11 +2,14 @@
 
 PGNをローカルのStockfishで解析し、Codexで日本語の対局解説を仕上げるプロジェクト。APIキーやMCPサーバーは不要です。
 
-## 公開した対局解説
+## 対局解説
 
-- [町田シルバーウィークオープン：Vyom Walia戦・黒番（2026年9月19日）](reviews/2026-09-19-machida-walia/README.md) — 局面図5枚付き。中央の前進から昇格メイトまでを振り返ります。
+- [町田シルバーウィークオープン：Le Tri Khoa戦・白番（2026年9月19日）](output/2026-09-19-machida-le-tri-khoa/game-001/article.md) — 王手の順番と、クイーンを縛るビショップを振り返ります。
+- [町田シルバーウィークオープン：Vyom Walia戦・黒番（2026年9月19日）](output/2026-09-19-machida-walia/game-001/article.md) — 局面図5枚付き。中央の前進から昇格メイトまでを振り返ります。
 
-解説は `reviews/` にMarkdownで保存し、局面図・PGN・解析JSONを相対リンクで参照しています。GitHub上でそのまま読めます。
+解析結果と完成した解説は `output/<対局名>/game-NNN/` にまとめて保存します。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
+
+新しい記事を作成したら、この一覧にもリンクを追加してください。対局の成果物はGitで管理し、サンプル出力（`output/sample/`）と公開用の一時ファイル（`output/*/publish/`）は管理対象外です。
 
 ## セットアップ（macOS）
 
@@ -34,6 +37,7 @@ output/my-game/game-001/
 ├── game.pgn
 ├── game.analysis.json
 ├── draft.md
+├── article.md（解説を仕上げた後に保存）
 └── images/position-01.svg ...
 ```
 

@@ -1,6 +1,6 @@
 # 中央の前進から昇格メイトへ——町田シルバーウィークオープン、黒番の振り返り
 
-[棋譜（PGN）](../../games/2026-09-19-machida-walia.pgn) · [全局面の解析](game.analysis.json) · [構想の追加解析](focus.analysis.json) · [重要局面の再確認](verification.analysis.json)
+[棋譜（PGN）](game.pgn) · [全局面の解析](game.analysis.json) · [構想の追加解析](focus.analysis.json) · [重要局面の再確認](verification.analysis.json)
 
 2026年9月19日／白：Vyom Walia（1629）／黒：筆者／結果：0–1（34手でチェックメイト）
 

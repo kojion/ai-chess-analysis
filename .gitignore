@@ -1,4 +1,5 @@
 .venv/
 __pycache__/
-output/
+output/sample/
+output/*/publish/
 .DS_Store
