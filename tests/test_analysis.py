@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import tempfile
@@ -47,7 +48,7 @@ class AnalysisTests(unittest.TestCase):
         self.assertEqual(games[0].board().fullmove_number, 25)
         self.assertEqual(games[0].board().turn, chess.BLACK)
 
-    @unittest.skipUnless(shutil.which("stockfish"), "Stockfish required")
+    @unittest.skipUnless(shutil.which(os.environ.get("STOCKFISH_PATH", "stockfish")), "Stockfish required")
     def test_real_engine_and_cache(self):
         with tempfile.TemporaryDirectory() as temp:
             args = [str(Path(__file__).parents[1] / "examples/sample.pgn"), "--output", temp,
@@ -55,7 +56,7 @@ class AnalysisTests(unittest.TestCase):
             self.assertEqual(a.main(args), 0)
             dest = Path(temp) / "game-001"
             path = dest / "game.analysis.json"
-            data = json.loads(path.read_text())
+            data = json.loads(path.read_text(encoding="utf-8"))
             rows = data["game"]["moves"]
             self.assertEqual(len(rows), 4)
             self.assertEqual(rows[-1]["after"]["score"]["mate"], 0)
@@ -69,11 +70,14 @@ class AnalysisTests(unittest.TestCase):
                         self.assertIn(move, board.legal_moves)
                         board.push(move)
             self.assertEqual(len(list((dest / "images").glob("*.svg"))), 2)
+            # Artifacts are committed to Git, so they must be byte-identical (LF) on every OS.
+            for artifact in [dest / "draft.md", dest / "game.pgn", path, *(dest / "images").glob("*.svg")]:
+                self.assertNotIn(b"\r", artifact.read_bytes(), artifact.name)
             mtime = path.stat().st_mtime_ns
-            (dest / "article.md").write_text("keep")
+            (dest / "article.md").write_text("keep", encoding="utf-8")
             self.assertEqual(a.main(args), 0)
             self.assertEqual(path.stat().st_mtime_ns, mtime)
-            self.assertEqual((dest / "article.md").read_text(), "keep")
+            self.assertEqual((dest / "article.md").read_text(encoding="utf-8"), "keep")
 
 
 if __name__ == "__main__":

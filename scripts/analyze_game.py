@@ -145,7 +145,7 @@ def render(game, dest, orientation):
     h = game["headers"]
     text = [f'# {h.get("White", "白")} vs {h.get("Black", "黒")}', '',
             f'結果: {h.get("Result", "*")} / 日付: {h.get("Date", "?")}', '',
-            'これはStockfishの計算結果に基づく解説下書きです。候補の選定と戦術・戦略の説明はCodexで仕上げます。', '',
+            'これはStockfishの計算結果に基づく解説下書きです。候補の選定と戦術・戦略の説明はAIアシスタントで仕上げます。', '',
             '評価値は常に白視点（＋は白有利）。メイトは数値評価と分けて表示します。', '',
             '「期待スコア」はsf16モデルによる勝ち＋引き分けの半分の推定値で、人間の勝率ではありません。分類は暫定です。', '']
     for index, ply in enumerate(game["selected_plies"], 1):
@@ -161,7 +161,7 @@ def render(game, dest, orientation):
             arrows.append(chess.svg.Arrow(m.from_square, m.to_square, color="green"))
         view = board.turn if orientation == "mover" else orientation == "white"
         filename = f"position-{index:02}.svg"
-        (images / filename).write_text(chess.svg.board(board, orientation=view, arrows=arrows, size=640), encoding="utf-8")
+        (images / filename).write_text(chess.svg.board(board, orientation=view, arrows=arrows, size=640), encoding="utf-8", newline="\n")
         text += [f'## 注目局面 {row["label"]}', '', f'![{row["label"]}を指す前](images/{filename})', '',
                  f'実戦は **{row["played_san"]}**。推奨候補は **{best["pv_san"][0]}** です。', '',
                  f'推奨候補の評価: {evaluation(best["score"])} / 実戦手を選んだ場合: {evaluation(played["score"])}。', '',
@@ -175,8 +175,8 @@ def render(game, dest, orientation):
             text += ['第2候補との評価差が大きく、最善候補を見つけることが重要な局面です。唯一手かどうかは追加検証が必要です。', '']
         text += [f'推奨手からの参考変化: {" → ".join(best["pv_san"][:6])}', '',
                  f'実戦手からの参考変化: {" → ".join(played["pv_san"][:6])}', '',
-                 '<!-- Codex: PVと盤面で裏付けられる狙い、相手の応手、改善点を説明する。未検証の戦術名や心理を創作しない。 -->', '']
-    (dest / "draft.md").write_text('\n'.join(text), encoding="utf-8")
+                 '<!-- AIアシスタント: PVと盤面で裏付けられる狙い、相手の応手、改善点を説明する。未検証の戦術名や心理を創作しない。 -->', '']
+    (dest / "draft.md").write_text('\n'.join(text), encoding="utf-8", newline="\n")
 
 
 def positive_float(value):
@@ -194,6 +194,9 @@ def positive_int(value):
 
 
 def main(argv=None):
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pgn", type=Path)
     parser.add_argument("--output", type=Path, default=Path("output"))
@@ -217,7 +220,8 @@ def main(argv=None):
         games = load_games(raw.decode("utf-8-sig"))
         engine_path = shutil.which(args.engine)
         if not engine_path:
-            raise ValueError("Stockfishが見つかりません。brew install stockfish または --engine を指定してください")
+            raise ValueError("Stockfishが見つかりません。インストール（macOS: brew install stockfish / Windows: winget install Stockfish.Stockfish）後、"
+                             "--engine または環境変数 STOCKFISH_PATH に実行ファイルのパスを指定してください")
         settings = {k: getattr(args, k) for k in ("quick", "deep", "candidates", "positions", "multipv", "threads", "hash")}
         key_data = {"version": VERSION, "pgn_sha256": hashlib.sha256(raw).hexdigest(), "settings": settings,
                     "engine_sha256": hashlib.sha256(Path(engine_path).read_bytes()).hexdigest(), "chess_version": chess.__version__}
@@ -243,11 +247,11 @@ def main(argv=None):
                     data = {"schema_version": VERSION, "cache_key": cache_key, "engine": engine.id,
                             "evaluation_pov": "white", "expectation_model": "sf16", "game": analyze(engine, game, args)}
                     temporary = path.with_suffix(".tmp")
-                    temporary.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+                    temporary.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
                     temporary.replace(path)
                 else:
                     print(f"対局 {index}: 保存済み解析を使用", file=sys.stderr)
-                (dest / "game.pgn").write_text(str(game) + '\n', encoding="utf-8")
+                (dest / "game.pgn").write_text(str(game) + '\n', encoding="utf-8", newline="\n")
                 render(data["game"], dest, args.orientation)
                 print(dest.resolve())
     except (OSError, ValueError, chess.engine.EngineError) as exc:

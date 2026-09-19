@@ -3,3 +3,7 @@ __pycache__/
 output/sample/
 output/*/publish/
 .DS_Store
+.idea/
+*.iml
+Thumbs.db
+desktop.ini

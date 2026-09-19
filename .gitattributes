@@ -1,0 +1,7 @@
+# Artifacts are committed and must be byte-identical across macOS and Windows.
+* text=auto eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.pgn text eol=lf
+*.svg text eol=lf
+*.py text eol=lf
