@@ -72,6 +72,16 @@ CLIは計算根拠・局面図・事実中心の日本語下書きを作成し�
 
 スキルの実体は `.claude/skills/chess-game-review/SKILL.md` です。Claude Codeはプロジェクトのスキルとして自動で認識し、Codexはプロジェクトの `AGENTS.md` から参照します（Claude Codeは `CLAUDE.md` 経由で `AGENTS.md` を取り込みます）。個人用のグローバル設定は不要です。
 
+## 候補外の局面を再確認する
+
+自動選定は、すでに大差の局面での悪手（期待スコアの差が出にくい）や、軽量解析で見えないメイトを拾えないことがあります。気になる手は、解析済みの対局ディレクトリを指定して、深く探索し直せます。
+
+```bash
+.venv/bin/python scripts/verify_positions.py output/my-game/game-001 17.a4 34.g4 --seconds 6 --multipv 4
+```
+
+局面は半手番号（`33`）または手の表記（`17.a4`、黒の手は `17...Nd4`）で指定します。結果は `verification.analysis.json` に保存され、構造は `game.analysis.json` の `deep` と同じです（`candidates`・`played`・`metrics`）。実行のたびにファイル全体が上書きされるため、必要な局面をまとめて指定してください。`--seconds`（既定6秒）、`--multipv`（既定4）、`--engine`、`--threads`、`--hash` で変更できます。Windowsでは `.venv\Scripts\python.exe scripts\verify_positions.py ...` に読み替えてください。
+
 ## 探索と設定
 
 - 全局面: 1探索0.15秒。期待スコアの低下とメイトの変化から候補を抽出。

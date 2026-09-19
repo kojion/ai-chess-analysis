@@ -11,6 +11,9 @@ import chess.engine
 spec = importlib.util.spec_from_file_location("analysis", Path(__file__).parents[1] / "scripts/analyze_game.py")
 a = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(a)
+spec = importlib.util.spec_from_file_location("verify", Path(__file__).parents[1] / "scripts/verify_positions.py")
+v = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(v)
 
 
 class AnalysisTests(unittest.TestCase):
@@ -48,6 +51,17 @@ class AnalysisTests(unittest.TestCase):
         self.assertEqual(games[0].board().fullmove_number, 25)
         self.assertEqual(games[0].board().turn, chess.BLACK)
 
+    def test_resolve_plies(self):
+        moves = [{"ply": 1, "label": "1.f3"}, {"ply": 2, "label": "1...e5"}, {"ply": 3, "label": "2.g4"}]
+        self.assertEqual(v.resolve_plies(moves, ["2.g4", "1", "1...e5", "3"]), [1, 2, 3])
+        for bad in ["0", "4", "9.e4", "-1"]:
+            with self.assertRaises(ValueError):
+                v.resolve_plies(moves, [bad])
+
+    def test_verify_requires_analyzed_game(self):
+        with tempfile.TemporaryDirectory() as temp:
+            self.assertEqual(v.main([temp, "1"]), 1)
+
     @unittest.skipUnless(shutil.which(os.environ.get("STOCKFISH_PATH", "stockfish")), "Stockfish required")
     def test_real_engine_and_cache(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -78,6 +92,32 @@ class AnalysisTests(unittest.TestCase):
             self.assertEqual(a.main(args), 0)
             self.assertEqual(path.stat().st_mtime_ns, mtime)
             self.assertEqual((dest / "article.md").read_text(encoding="utf-8"), "keep")
+
+    @unittest.skipUnless(shutil.which(os.environ.get("STOCKFISH_PATH", "stockfish")), "Stockfish required")
+    def test_verify_positions(self):
+        with tempfile.TemporaryDirectory() as temp:
+            sample = str(Path(__file__).parents[1] / "examples/sample.pgn")
+            self.assertEqual(a.main([sample, "--output", temp, "--quick", ".02", "--deep", ".05"]), 0)
+            dest = Path(temp) / "game-001"
+            self.assertEqual(v.main([str(dest), "2.g4", "2", "--seconds", ".05", "--multipv", "2"]), 0)
+            path = dest / "verification.analysis.json"
+            self.assertNotIn(b"\r", path.read_bytes())
+            data = json.loads(path.read_text(encoding="utf-8"))
+            rows = json.loads((dest / "game.analysis.json").read_text(encoding="utf-8"))["game"]["moves"]
+            self.assertEqual([p["ply"] for p in data["positions"]], [2, 3])
+            for position in data["positions"]:
+                row = rows[position["ply"] - 1]
+                self.assertEqual((position["label"], position["fen"]), (row["label"], row["fen_before"]))
+                self.assertEqual(set(position) & {"candidates", "played", "metrics"}, {"candidates", "played", "metrics"})
+                board = chess.Board(row["fen_before"])
+                self.assertEqual(position["played"]["pv_uci"][0], row["played_uci"])
+                for line in position["candidates"] + [position["played"]]:
+                    replay = board.copy()
+                    for uci in line["pv_uci"]:
+                        move = chess.Move.from_uci(uci)
+                        self.assertIn(move, replay.legal_moves)
+                        replay.push(move)
+            self.assertEqual(v.main([str(dest), "9.e4"]), 1)
 
 
 if __name__ == "__main__":

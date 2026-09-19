@@ -95,6 +95,22 @@ def priority(row):
     return metrics["expectation_loss"] + .3 * len(metrics["reasons"])
 
 
+def deep_review(engine, board, played, seconds, multipv):
+    """Compare the played move with the engine's candidates from the same root and search budget."""
+    lines = search(engine, board, seconds, multipv)
+    # Include the actual move even when it falls outside MultiPV. Callers pass boards that keep game history.
+    played_line = next((line for line in lines if line["pv_uci"] and line["pv_uci"][0] == played.uci()), None)
+    if played_line is None:
+        played_line = search(engine, board, seconds, root_moves=[played])[0]
+    review = {"candidates": lines, "played": played_line,
+              "metrics": loss_info(lines[0]["score"], played_line["score"], board.turn)}
+    if len(lines) > 1:
+        gap = loss_info(lines[0]["score"], lines[1]["score"], board.turn)["expectation_loss"]
+        review["best_second_expectation_gap"] = gap
+        review["only_move_candidate"] = gap >= .15
+    return review
+
+
 def analyze(engine, game, args):
     board = game.board()
     boards, rows = [], []
@@ -113,20 +129,8 @@ def analyze(engine, game, args):
     candidates = sorted(rows, key=priority, reverse=True)[:args.candidates]
     for index, row in enumerate(candidates, 1):
         print(f'  詳細解析 {index}/{len(candidates)}: {row["label"]}', file=sys.stderr)
-        board = boards[row["ply"] - 1]
-        lines = search(engine, board, args.deep, args.multipv)
-        played = chess.Move.from_uci(row["played_uci"])
-        # Compare at the same root and search budget; include the actual move even
-        # when it falls outside MultiPV. Preserve game history in board copies.
-        played_line = next((line for line in lines if line["pv_uci"] and line["pv_uci"][0] == played.uci()), None)
-        if played_line is None:
-            played_line = search(engine, board, args.deep, root_moves=[played])[0]
-        row["deep"] = {"candidates": lines, "played": played_line,
-                       "metrics": loss_info(lines[0]["score"], played_line["score"], board.turn)}
-        if len(lines) > 1:
-            gap = loss_info(lines[0]["score"], lines[1]["score"], board.turn)["expectation_loss"]
-            row["deep"]["best_second_expectation_gap"] = gap
-            row["deep"]["only_move_candidate"] = gap >= .15
+        row["deep"] = deep_review(engine, boards[row["ply"] - 1], chess.Move.from_uci(row["played_uci"]),
+                                  args.deep, args.multipv)
     selected = sorted(candidates, key=priority, reverse=True)[:args.positions]
     return {"headers": dict(game.headers), "initial_fen": game.board().fen(), "moves": rows,
             "selected_plies": sorted(row["ply"] for row in selected)}
@@ -193,10 +197,23 @@ def positive_int(value):
     return number
 
 
-def main(argv=None):
+def use_utf8_stdio():
+    """Japanese messages must survive redirection under a non-UTF-8 locale (e.g. cp932 on Windows)."""
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8")
+
+
+def find_engine(name):
+    path = shutil.which(name)
+    if not path:
+        raise ValueError("Stockfishが見つかりません。インストール（macOS: brew install stockfish / Windows: winget install Stockfish.Stockfish）後、"
+                         "--engine または環境変数 STOCKFISH_PATH に実行ファイルのパスを指定してください")
+    return path
+
+
+def main(argv=None):
+    use_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pgn", type=Path)
     parser.add_argument("--output", type=Path, default=Path("output"))
@@ -218,10 +235,7 @@ def main(argv=None):
     try:
         raw = args.pgn.read_bytes()
         games = load_games(raw.decode("utf-8-sig"))
-        engine_path = shutil.which(args.engine)
-        if not engine_path:
-            raise ValueError("Stockfishが見つかりません。インストール（macOS: brew install stockfish / Windows: winget install Stockfish.Stockfish）後、"
-                             "--engine または環境変数 STOCKFISH_PATH に実行ファイルのパスを指定してください")
+        engine_path = find_engine(args.engine)
         settings = {k: getattr(args, k) for k in ("quick", "deep", "candidates", "positions", "multipv", "threads", "hash")}
         key_data = {"version": VERSION, "pgn_sha256": hashlib.sha256(raw).hexdigest(), "settings": settings,
                     "engine_sha256": hashlib.sha256(Path(engine_path).read_bytes()).hexdigest(), "chess_version": chess.__version__}
