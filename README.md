@@ -5,6 +5,7 @@ PGNをローカルのStockfishで解析し、Codex / Claude Codeで日本語の�
 ## 対局解説
 
 - [lichess：Harshit27092018戦・黒番（2026年9月19日）](output/2026-09-19-lichess-harshit27092018/game-001/article.md) — 局面図5枚付き。白の17.a4をとがめた17...Nd4と、勝勢での19...Bc5を振り返ります。
+- [lichess：Mohammed1972戦・白番（2026年9月20日）](output/2026-09-20-lichess-mohammed1972/game-001/article.md) — 局面図5枚付き。黒のミス直後に3度逃したh4と、23.Qa5?でルークの守りが外れた場面を振り返ります。
 
 解析結果と完成した解説は `output/<対局名>/game-NNN/` にまとめて保存します。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
 
