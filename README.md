@@ -4,10 +4,10 @@ PGNをローカルのStockfishで解析し、Codex / Claude Codeで日本語の�
 
 ## 対局解説
 
-- [lichess：Harshit27092018戦・黒番（2026年9月19日）](output/2026-09-19-lichess-harshit27092018/game-001/article.md) — 局面図5枚付き。白の17.a4をとがめた17...Nd4と、勝勢での19...Bc5を振り返ります。
-- [lichess：Mohammed1972戦・白番（2026年9月20日）](output/2026-09-20-lichess-mohammed1972/game-001/article.md) — 局面図5枚付き。黒のミス直後に3度逃したh4と、23.Qa5?でルークの守りが外れた場面を振り返ります。
-- [lichess：Evgen1y57戦・黒番（2026年9月20日）](output/2026-09-20-lichess-evgen1y57/game-001/article.md) — 局面図5枚付き。25.Qa4?をとがめた25...Nc5!と、優勢を手放した27...Kf8?・29...Nd3?を振り返ります。
-- [lichess：Hamidsadr2戦・黒番（2026年9月20日）](output/2026-09-20-lichess-hamidsadr2/game-001/article.md) — 局面図5枚付き。9.h3?で空いたh2への狙いと、最善手の9...Bd6!からクイーンを奪った10手を振り返ります。
+- [lichess：Harshit27092018戦・黒番（2026年9月19日）](output/2026-09-19-harshit27092018/article.md) — 局面図5枚付き。白の17.a4をとがめた17...Nd4と、勝勢での19...Bc5を振り返ります。
+- [lichess：Mohammed1972戦・白番（2026年9月20日）](output/2026-09-20-mohammed1972/article.md) — 局面図5枚付き。黒のミス直後に3度逃したh4と、23.Qa5?でルークの守りが外れた場面を振り返ります。
+- [lichess：Evgen1y57戦・黒番（2026年9月20日）](output/2026-09-20-evgen1y57/article.md) — 局面図5枚付き。25.Qa4?をとがめた25...Nc5!と、優勢を手放した27...Kf8?・29...Nd3?を振り返ります。
+- [lichess：Hamidsadr2戦・黒番（2026年9月20日）](output/2026-09-20-hamidsadr2/article.md) — 局面図5枚付き。9.h3?で空いたh2への狙いと、最善手の9...Bd6!からクイーンを奪った10手を振り返ります。
 
 解析結果と完成した解説は `output/<日付>-<相手>/`（例: `output/2026-09-20-evgen1y57/`）にまとめて保存します。対面の大会棋譜は `<日付>-<大会>-<相手>`、同じ日に同じ相手と複数局あるときは末尾に `-2` を付けます。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
 
