@@ -1,0 +1,23 @@
+[Event "rated classical game"]
+[Site "https://lichess.org/pb65np0J"]
+[Date "2026.09.20"]
+[Round "-"]
+[White "Evgen1y57"]
+[Black "zbxah"]
+[Result "1-0"]
+[GameId "pb65np0J"]
+[UTCDate "2026.09.20"]
+[UTCTime "04:56:24"]
+[WhiteElo "1835"]
+[BlackElo "1694"]
+[WhiteRatingDiff "+3"]
+[BlackRatingDiff "-4"]
+[Variant "Standard"]
+[TimeControl "1800+20"]
+[ECO "A46"]
+[Opening "Indian Defense: Spielmann-Indian"]
+[Termination "Normal"]
+
+1. d4 Nf6 2. Nf3 c5 3. e3 e6 4. a3 Be7 5. Bd3 O-O 6. b3 d5 7. Bb2 Nc6 8. h3 cxd4 9. exd4 Qc7 10. O-O Bd6 11. c4 dxc4 12. bxc4 b6 13. Nc3 e5 14. d5 Na5 15. Nb5 Qc5 16. Nxd6 Qxd6 17. Bxe5 Qd8 18. Re1 Ba6 19. Rc1 Rc8 20. Qa4 Re8 21. Kh2 Nd7 22. Qc2 h6 23. Bg3 Rxe1 24. Rxe1 Nxc4 25. Qa4 Nc5 26. Qc2 Nxa3 27. Bh7+ Kf8 28. Qd2 Nc4 29. Qf4 Nd3 1-0
+
+
