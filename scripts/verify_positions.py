@@ -27,7 +27,7 @@ def boards_before(game):
 def main(argv=None):
     core.use_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("game_dir", type=Path, help="解析済みの対局ディレクトリ（output/NAME/game-NNN）")
+    parser.add_argument("game_dir", type=Path, help="解析済みの対局ディレクトリ（output/NAME。複数局のPGNは output/NAME/game-NNN）")
     parser.add_argument("positions", nargs="+", help="半手番号（例: 33）または手の表記（例: 17.a4, 17...Nd4）")
     parser.add_argument("--engine", default=os.environ.get("STOCKFISH_PATH", "stockfish"))
     parser.add_argument("--seconds", type=core.positive_float, default=6, help="1探索あたり秒数")

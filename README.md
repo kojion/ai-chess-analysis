@@ -9,7 +9,7 @@ PGNをローカルのStockfishで解析し、Codex / Claude Codeで日本語の�
 - [lichess：Evgen1y57戦・黒番（2026年9月20日）](output/2026-09-20-lichess-evgen1y57/game-001/article.md) — 局面図5枚付き。25.Qa4?をとがめた25...Nc5!と、優勢を手放した27...Kf8?・29...Nd3?を振り返ります。
 - [lichess：Hamidsadr2戦・黒番（2026年9月20日）](output/2026-09-20-lichess-hamidsadr2/game-001/article.md) — 局面図5枚付き。9.h3?で空いたh2への狙いと、最善手の9...Bd6!からクイーンを奪った10手を振り返ります。
 
-解析結果と完成した解説は `output/<対局名>/game-NNN/` にまとめて保存します。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
+解析結果と完成した解説は `output/<日付>-<相手>/`（例: `output/2026-09-20-evgen1y57/`）にまとめて保存します。対面の大会棋譜は `<日付>-<大会>-<相手>`、同じ日に同じ相手と複数局あるときは末尾に `-2` を付けます。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
 
 新しい記事を作成したら、この一覧にもリンクを追加してください。対局の成果物はGitで管理し、サンプル出力（`output/sample/`）と公開用の一時ファイル（`output/*/publish/`）は管理対象外です。
 
@@ -54,12 +54,12 @@ $exe = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages\Stockfish.Stockfis
 
 Windowsでは `.venv\Scripts\python.exe scripts\analyze_game.py ...` に読み替えてください。出力ファイルはOSによらずLF改行で保存されます。
 
-`games/my-game.pgn` は自身の棋譜のパスに置き換えてください。UTF-8のPGNに対応し、複数対局がある場合も順番に処理します。通常チェスのみ対応。コメントや分岐は分析せず、本譜を使います。不正な棋譜はエラーにします。
+`games/my-game.pgn` は自身の棋譜のパスに置き換えてください。UTF-8のPGNに対応し、複数対局がある場合も順番に処理します（1局のPGNは `--output` の直下、複数局のPGNは `--output/game-001/`、`game-002/` … に保存します。1局のPGNに後から局を足して再実行すると保存先が切り替わるので、直下の旧ファイルは手で片付けてください）。通常チェスのみ対応。コメントや分岐は分析せず、本譜を使います。不正な棋譜はエラーにします。
 
 出力例:
 
 ```text
-output/my-game/game-001/
+output/my-game/
 ├── game.pgn
 ├── game.analysis.json
 ├── draft.md
@@ -71,7 +71,7 @@ CLIは計算根拠・局面図・事実中心の日本語下書きを作成し�
 
 > games/my-game.pgnを解析して。私は黒です。重要局面を3〜5個選び、初級者向けに改善点を説明してください。
 
-> output/my-game/game-001/game.analysis.jsonを使って、ブログ向けの解説に仕上げて。
+> output/my-game/game.analysis.jsonを使って、ブログ向けの解説に仕上げて。
 
 スキルの実体は `.claude/skills/chess-game-review/SKILL.md` です。Claude Codeはプロジェクトのスキルとして自動で認識し、Codexはプロジェクトの `AGENTS.md` から参照します（Claude Codeは `CLAUDE.md` 経由で `AGENTS.md` を取り込みます）。個人用のグローバル設定は不要です。
 
@@ -80,7 +80,7 @@ CLIは計算根拠・局面図・事実中心の日本語下書きを作成し�
 自動選定は、すでに大差の局面での悪手（期待スコアの差が出にくい）や、軽量解析で見えないメイトを拾えないことがあります。気になる手は、解析済みの対局ディレクトリを指定して、深く探索し直せます。
 
 ```bash
-.venv/bin/python scripts/verify_positions.py output/my-game/game-001 17.a4 34.g4 --seconds 6 --multipv 4
+.venv/bin/python scripts/verify_positions.py output/my-game 17.a4 34.g4 --seconds 6 --multipv 4
 ```
 
 局面は半手番号（`33`）または手の表記（`17.a4`、黒の手は `17...Nd4`）で指定します。結果は `verification.analysis.json` に保存され、構造は `game.analysis.json` の `deep` と同じです（`candidates`・`played`・`metrics`）。実行のたびにファイル全体が上書きされるため、必要な局面をまとめて指定してください。`--seconds`（既定6秒）、`--multipv`（既定4）、`--engine`、`--threads`、`--hash` で変更できます。Windowsでは `.venv\Scripts\python.exe scripts\verify_positions.py ...` に読み替えてください。
@@ -90,7 +90,7 @@ CLIは計算根拠・局面図・事実中心の日本語下書きを作成し�
 自動生成される図（`images/position-NN.svg`）とは別に、記事に載せる局面を選んで図を作れます。実戦手は赤、最善候補は緑の矢印で描き、実戦手が最善なら緑だけにします。最善候補は、あれば `verification.analysis.json`、なければ `game.analysis.json` の詳細解析から取ります。
 
 ```bash
-.venv/bin/python scripts/render_review.py output/my-game/game-001 17.a4 17...Nd4 19...f5 --orientation black --arrow 19...f5:d4f3:blue
+.venv/bin/python scripts/render_review.py output/my-game 17.a4 17...Nd4 19...f5 --orientation black --arrow 19...f5:d4f3:blue
 ```
 
 図は、指定した局面を手数順に `images/review-01.svg` から保存します。`--arrow 局面:UCI[:色]` で説明用の矢印を足せます（色の既定は青。複数指定可）。既存の図は `--force` を付けない限り上書きしません。あとから図を足すときは `--start 6` のように番号を指定してください。Windowsでは `.venv\Scripts\python.exe scripts\render_review.py ...` に読み替えてください。

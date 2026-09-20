@@ -228,7 +228,7 @@ def main(argv=None):
     use_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pgn", type=Path)
-    parser.add_argument("--output", type=Path, default=Path("output"))
+    parser.add_argument("--output", type=Path, default=Path("output"), help="出力先。1局のPGNは直下、複数局は game-NNN/ に保存")
     parser.add_argument("--engine", default=os.environ.get("STOCKFISH_PATH", "stockfish"))
     parser.add_argument("--quick", type=positive_float, default=.15, help="全局面の1探索あたり秒数")
     parser.add_argument("--deep", type=positive_float, default=2, help="詳細解析の1探索あたり秒数")
@@ -255,7 +255,8 @@ def main(argv=None):
         with chess.engine.SimpleEngine.popen_uci(engine_path) as engine:
             engine.configure({"Threads": args.threads, "Hash": args.hash})
             for index, game in enumerate(games, 1):
-                dest = args.output / f"game-{index:03}"
+                # A single game lives directly under --output; a multi-game PGN gets one game-NNN directory per game.
+                dest = args.output if len(games) == 1 else args.output / f"game-{index:03}"
                 dest.mkdir(exist_ok=True)
                 path = dest / "game.analysis.json"
                 cache_key = dict(key_data, game_index=index)

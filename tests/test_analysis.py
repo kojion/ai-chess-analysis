@@ -124,7 +124,9 @@ class AnalysisTests(unittest.TestCase):
             args = [str(Path(__file__).parents[1] / "examples/sample.pgn"), "--output", temp,
                     "--quick", ".02", "--deep", ".05", "--candidates", "4", "--positions", "2"]
             self.assertEqual(a.main(args), 0)
-            dest = Path(temp) / "game-001"
+            # A single game is stored directly under --output, without a game-NNN directory.
+            dest = Path(temp)
+            self.assertFalse((dest / "game-001").exists())
             path = dest / "game.analysis.json"
             data = json.loads(path.read_text(encoding="utf-8"))
             rows = data["game"]["moves"]
@@ -154,7 +156,7 @@ class AnalysisTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             sample = str(Path(__file__).parents[1] / "examples/sample.pgn")
             self.assertEqual(a.main([sample, "--output", temp, "--quick", ".02", "--deep", ".05"]), 0)
-            dest = Path(temp) / "game-001"
+            dest = Path(temp)
             self.assertEqual(v.main([str(dest), "2.g4", "2", "--seconds", ".05", "--multipv", "2"]), 0)
             path = dest / "verification.analysis.json"
             self.assertNotIn(b"\r", path.read_bytes())
@@ -174,6 +176,18 @@ class AnalysisTests(unittest.TestCase):
                         self.assertIn(move, replay.legal_moves)
                         replay.push(move)
             self.assertEqual(v.main([str(dest), "9.e4"]), 1)
+
+    @unittest.skipUnless(shutil.which(os.environ.get("STOCKFISH_PATH", "stockfish")), "Stockfish required")
+    def test_multi_game_pgn_keeps_game_dirs(self):
+        with tempfile.TemporaryDirectory() as temp:
+            sample = (Path(__file__).parents[1] / "examples/sample.pgn").read_text(encoding="utf-8")
+            pgn, output = Path(temp) / "two.pgn", Path(temp) / "out"
+            pgn.write_text(sample.strip() + "\n\n" + sample.strip() + "\n", encoding="utf-8")
+            self.assertEqual(a.main([str(pgn), "--output", str(output), "--quick", ".02", "--deep", ".05",
+                                     "--candidates", "4", "--positions", "2"]), 0)
+            for name in ("game-001", "game-002"):
+                self.assertTrue((output / name / "game.analysis.json").exists(), name)
+            self.assertFalse((output / "game.analysis.json").exists())
 
 
 if __name__ == "__main__":
