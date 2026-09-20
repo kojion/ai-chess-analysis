@@ -7,7 +7,7 @@ description: PGN棋譜をローカルStockfishで2段階解析し、重要局面
 
 このスキルは本リポジトリの `scripts/analyze_game.py` を使用する。スキル単体を移動せず、プロジェクトのルートで実行する。
 
-1. PGNと、指定があればユーザーの色・棋力・記事用途を確認する。未指定なら両者向けの日本語解説、盤面は白視点を既定とし、作業を進める。PGNがなければサンプルと実際の対局を混同しない。
+1. PGNと、指定があればユーザーの色・棋力・記事用途を確認する。未指定なら両者向けの日本語解説、盤面は白視点を既定とし、作業を進める。PGNがなければサンプルと実際の対局を混同しない。lichessの対局は `<venv-python> scripts/fetch_games.py URLまたはID` で `games/` に保存できる（新しい対局の一括取得は環境変数 `LICHESS_TOKEN` が必要）。`--user 名前 --analyze` を付けると、ユーザー名から白番・黒番を判断して、`output/<日付>-<相手>/` に解析まで行う。
 2. 保存先は `output/<日付>-<相手>/`（例: `output/2026-09-20-evgen1y57/`）に統一する。対面の大会棋譜は `<日付>-<大会>-<相手>`、同日・同相手が重なるときは末尾に `-2`。複数局入りのPGNだけ `output/NAME/game-NNN/` に分かれる。NAMEは既存対局ならそのディレクトリ名、新規なら上の規則で付け、`reviews/` など別の保存先へ複製しない。`<venv-python> scripts/analyze_game.py INPUT.pgn --output output/NAME` で解析（`<venv-python>` は macOS/Linuxなら `.venv/bin/python`、Windowsなら `.venv\Scripts\python.exe`）。黒側なら `--orientation black`。Stockfishが見つからないと言われたら、環境変数 `STOCKFISH_PATH` か `--engine` に実行ファイルのパスを指定する。依存関係はルートのREADME参照。保存済みJSONは入力・設定・エンジンが一致すれば再利用される。文章の修正だけなら再解析しない。
 3. `game.analysis.json` の `game.moves` と `selected_plies`、`draft.md` を読む。評価は白視点、損失は手番側。`deep.candidates` と `deep.played` が詳細解析の根拠であり、軽量解析との差を混同しない。分類、期待スコア、only_move_candidateは暫定的なヒューリスティックであり、人間の勝率・公式なミス判定・唯一手の証明ではない。
 4. 勝敗の転換、見逃した手、判断の難しさ、改善につながる場面から通常3〜5局面を選ぶ。短い対局は少なくてよい。自動選定をそのまま採用する必要はない。深掘り候補を増やしたい場合は `--candidates` を増やす。自動選定は、すでに大差の局面での悪手や、軽量解析で見えないメイトを拾えないことがある。候補外の手を断定する前に、`<venv-python> scripts/verify_positions.py output/NAME 17.a4 34.g4 --seconds 6 --multipv 4` で再確認する（局面は半手番号、または `17.a4` / 黒の手は `17...Nd4` の形式で指定）。結果は同じディレクトリの `verification.analysis.json` に保存され、構造は `game.analysis.json` の `deep` と同じ（`candidates`・`played`・`metrics`）。実行のたびにファイル全体を上書きするので、必要な局面をまとめて指定する。

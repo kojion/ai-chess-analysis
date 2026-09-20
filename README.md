@@ -45,6 +45,44 @@ $exe = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages\Stockfish.Stockfis
 [Environment]::SetEnvironmentVariable('STOCKFISH_PATH', $exe, 'User')
 ```
 
+## lichess から対局を取得する
+
+`scripts/fetch_games.py` が、lichess の対局を `games/` に保存します。ファイル名も中身も、対局ページからの手動ダウンロードと同じです（`lichess_pgn_日付_白_vs_黒.対局ID.pgn`）。標準ライブラリだけで動きます。
+
+**1局だけ（トークン不要）：** 対局のURLかIDを渡します。
+
+```bash
+.venv/bin/python scripts/fetch_games.py https://lichess.org/pb65np0J
+```
+
+**新しい対局を一括で（要トークン）：** レート戦のクラシカル（`--perf` で種類、`--include-casual` でレートなしも）のうち、`games/` にある最新の対局より新しいものだけを取得します。
+
+```bash
+.venv/bin/python scripts/fetch_games.py --user zbxah
+```
+
+`--since 2026-09-01`（UTC）で開始日を、`--max` で最大局数を指定できます。`games/` が空で `--since` もないときは、直近10局だけを取得します。
+
+**取得から解析まで一度に：** `--analyze` を付けると、取得した対局を標準の設定（`--quick 0.3 --candidates 12 --positions 6`）で解析します。`--user` が白番か黒番かを判断して盤面の向きを決め、`output/<日付>-<相手>/` に保存します。すでに解析済みの対局は飛ばします。`games/` に取得済みの対局のURLかIDを渡して、解析だけをやり直すこともできます。
+
+```bash
+.venv/bin/python scripts/fetch_games.py --user zbxah --analyze
+```
+
+`--dry-run` を付けると、保存も解析もせずに、対象だけを表示します。Windowsでは `.venv\Scripts\python.exe scripts\fetch_games.py ...` に読み替えてください。
+
+### ユーザー名とトークン
+
+- ユーザー名は `--user`、または環境変数 `LICHESS_USER` で指定します。
+- 一括取得には、lichessの個人用APIトークンが必要です。https://lichess.org/account/oauth/token で、権限（スコープ）を選ばずに発行し、環境変数 `LICHESS_TOKEN` に設定します（公式仕様で、この機能に必要なスコープはありません）。トークンは秘密の情報なので、コマンドの引数やリポジトリには書かず、環境変数だけで渡します。Windows（PowerShell）では次のとおりで、設定後に開いたターミナルから有効です。
+
+```powershell
+[Environment]::SetEnvironmentVariable('LICHESS_TOKEN', '<トークン>', 'User')
+```
+
+- lichessの案内に従い、リクエストは1つずつ送り、制限（429）のときは60秒待って再試行します。
+- 証明書の検証は常に有効です。Windowsでは、ルート証明書のストアだけを信頼の起点にします（中間証明書のストアに期限切れの証明書が残っていると、Pythonが `certificate has expired` で失敗するため）。独自のCAバンドルを使うときは、環境変数 `SSL_CERT_FILE` で指定します。
+
 ## 棋譜を解析する
 
 ```bash
