@@ -1,0 +1,42 @@
+{
+  "description": "Position after 18...Qxf2+ (game resigned here). Each legal reply searched 10s, Stockfish 19, 1 thread, Hash 128MB. Scores are White POV.",
+  "fen": "rn3r1k/ppp3pp/6p1/3P3n/2B5/2B4P/PPP2qP1/R2QR1K1 w - - 0 19",
+  "replies": [
+    {
+      "move_san": "Kh2",
+      "move_uci": "g1h2",
+      "score": {
+        "cp": -481,
+        "mate": null
+      },
+      "depth": 23,
+      "pv_san": [
+        "Kh2",
+        "Qf4+",
+        "Kg1",
+        "Qxc4",
+        "Qd4",
+        "Qxd4+",
+        "Bxd4",
+        "Nf6",
+        "Re7",
+        "Na6",
+        "Rae1"
+      ]
+    },
+    {
+      "move_san": "Kh1",
+      "move_uci": "g1h1",
+      "score": {
+        "cp": 124,
+        "mate": null
+      },
+      "depth": 24,
+      "pv_san": [
+        "Kh1",
+        "Ng3+",
+        "Kh2"
+      ]
+    }
+  ]
+}
