@@ -1,0 +1,85 @@
+{
+  "description": "Position after 12...Bxf7 (game resigned here). Searched 10s with MultiPV 4, Stockfish 19, 1 thread, Hash 128MB. Scores are White POV.",
+  "fen": "r2k1bnr/ppp2bpp/1qn5/4p3/8/2PP1NNP/PP3PP1/R1BQ1RK1 w - - 0 13",
+  "lines": [
+    {
+      "move_san": "Be3",
+      "move_uci": "c1e3",
+      "score": {
+        "cp": 20,
+        "mate": null
+      },
+      "depth": 20,
+      "pv_san": [
+        "Be3",
+        "Qa6",
+        "b4",
+        "Nf6",
+        "a4",
+        "Nb8",
+        "Nxe5",
+        "Qe6",
+        "f4",
+        "Nbd7",
+        "Qf3"
+      ]
+    },
+    {
+      "move_san": "b4",
+      "move_uci": "b2b4",
+      "score": {
+        "cp": 0,
+        "mate": null
+      },
+      "depth": 20,
+      "pv_san": [
+        "b4",
+        "a5",
+        "Ng5",
+        "Nh6",
+        "Be3",
+        "Qa6",
+        "Nxf7+",
+        "Nxf7",
+        "Qb3",
+        "Nd6",
+        "a4"
+      ]
+    },
+    {
+      "move_san": "Ng5",
+      "move_uci": "f3g5",
+      "score": {
+        "cp": -28,
+        "mate": null
+      },
+      "depth": 20,
+      "pv_san": [
+        "Ng5",
+        "Nh6"
+      ]
+    },
+    {
+      "move_san": "Re1",
+      "move_uci": "f1e1",
+      "score": {
+        "cp": -83,
+        "mate": null
+      },
+      "depth": 19,
+      "pv_san": [
+        "Re1",
+        "Nf6",
+        "Be3",
+        "Qb5",
+        "c4",
+        "Qb4",
+        "a3",
+        "Qd6",
+        "b4",
+        "Kc8",
+        "Qc2"
+      ]
+    }
+  ]
+}

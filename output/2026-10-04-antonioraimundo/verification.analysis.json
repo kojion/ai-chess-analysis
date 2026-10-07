@@ -1,0 +1,2511 @@
+{
+  "schema_version": 1,
+  "engine": {
+    "name": "Stockfish 19",
+    "author": "the Stockfish developers (see AUTHORS file)"
+  },
+  "evaluation_pov": "white",
+  "expectation_model": "sf16",
+  "seconds": 6.0,
+  "multipv": 4,
+  "positions": [
+    {
+      "ply": 3,
+      "label": "2.Nf3",
+      "fen": "rnbqkb1r/pppppppp/5n2/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 1 2",
+      "candidates": [
+        {
+          "score": {
+            "cp": 79,
+            "mate": null,
+            "expectation_white": 0.6575
+          },
+          "pv_uci": [
+            "e4e5",
+            "f6d5",
+            "c2c4",
+            "d5b6",
+            "d2d4",
+            "d7d6",
+            "f2f4",
+            "d6e5",
+            "f4e5",
+            "c8f5",
+            "b1c3",
+            "b8c6"
+          ],
+          "pv_san": [
+            "e5",
+            "Nd5",
+            "c4",
+            "Nb6",
+            "d4",
+            "d6",
+            "f4",
+            "dxe5",
+            "fxe5",
+            "Bf5",
+            "Nc3",
+            "Nc6"
+          ],
+          "depth": 23,
+          "nodes": 4429966
+        },
+        {
+          "score": {
+            "cp": 12,
+            "mate": null,
+            "expectation_white": 0.505
+          },
+          "pv_uci": [
+            "b1c3",
+            "e7e5",
+            "g1f3",
+            "b8c6",
+            "d2d4",
+            "e5d4",
+            "f3d4",
+            "f8b4",
+            "d4c6",
+            "b7c6",
+            "f1d3",
+            "d7d5"
+          ],
+          "pv_san": [
+            "Nc3",
+            "e5",
+            "Nf3",
+            "Nc6",
+            "d4",
+            "exd4",
+            "Nxd4",
+            "Bb4",
+            "Nxc6",
+            "bxc6",
+            "Bd3",
+            "d5"
+          ],
+          "depth": 23,
+          "nodes": 4429966
+        },
+        {
+          "score": {
+            "cp": -1,
+            "mate": null,
+            "expectation_white": 0.4995
+          },
+          "pv_uci": [
+            "d2d3"
+          ],
+          "pv_san": [
+            "d3"
+          ],
+          "depth": 23,
+          "nodes": 4429966
+        },
+        {
+          "score": {
+            "cp": -18,
+            "mate": null,
+            "expectation_white": 0.492
+          },
+          "pv_uci": [
+            "f1d3",
+            "e7e5",
+            "b1c3",
+            "f8c5",
+            "g1f3",
+            "d7d6",
+            "d3c4",
+            "a7a5",
+            "h2h3",
+            "b8d7",
+            "a2a4",
+            "c7c6"
+          ],
+          "pv_san": [
+            "Bd3",
+            "e5",
+            "Nc3",
+            "Bc5",
+            "Nf3",
+            "d6",
+            "Bc4",
+            "a5",
+            "h3",
+            "Nbd7",
+            "a4",
+            "c6"
+          ],
+          "depth": 22,
+          "nodes": 4429966
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -80,
+          "mate": null,
+          "expectation_white": 0.337
+        },
+        "pv_uci": [
+          "g1f3",
+          "f6e4",
+          "d2d4",
+          "g7g6",
+          "c2c4",
+          "f8g7",
+          "f1d3",
+          "e4f6",
+          "e1g1",
+          "e8g8",
+          "f1e1",
+          "d7d6"
+        ],
+        "pv_san": [
+          "Nf3",
+          "Nxe4",
+          "d4",
+          "g6",
+          "c4",
+          "Bg7",
+          "Bd3",
+          "Nf6",
+          "O-O",
+          "O-O",
+          "Re1",
+          "d6"
+        ],
+        "depth": 33,
+        "nodes": 4003195
+      },
+      "metrics": {
+        "cp_loss": 159,
+        "expectation_loss": 0.3205,
+        "classification": "blunder_candidate",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.1525,
+      "only_move_candidate": true
+    },
+    {
+      "ply": 17,
+      "label": "9.Bg5",
+      "fen": "r2qkb1r/1pp2ppp/2n1p3/p1np4/P5b1/2NP1N2/BPP2PPP/R1BQK2R w KQkq - 0 9",
+      "candidates": [
+        {
+          "score": {
+            "cp": -235,
+            "mate": null,
+            "expectation_white": 0.0005
+          },
+          "pv_uci": [
+            "d3d4",
+            "g4f3",
+            "g2f3",
+            "c5d7",
+            "c3b5",
+            "c6b4",
+            "c1f4",
+            "b4a6",
+            "h2h4",
+            "d7b6",
+            "c2c3",
+            "c7c6"
+          ],
+          "pv_san": [
+            "d4",
+            "Bxf3",
+            "gxf3",
+            "Nd7",
+            "Nb5",
+            "Nb4",
+            "Bf4",
+            "Na6",
+            "h4",
+            "Nb6",
+            "c3",
+            "c6"
+          ],
+          "depth": 23,
+          "nodes": 3644395
+        },
+        {
+          "score": {
+            "cp": -262,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "h2h3",
+            "g4f3",
+            "d1f3",
+            "c6d4",
+            "f3d1",
+            "c7c6",
+            "c3b1",
+            "e6e5",
+            "e1g1",
+            "d4e6",
+            "b1d2",
+            "f7f5"
+          ],
+          "pv_san": [
+            "h3",
+            "Bxf3",
+            "Qxf3",
+            "Nd4",
+            "Qd1",
+            "c6",
+            "Nb1",
+            "e5",
+            "O-O",
+            "Nde6",
+            "Nd2",
+            "f5"
+          ],
+          "depth": 23,
+          "nodes": 3644395
+        },
+        {
+          "score": {
+            "cp": -296,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "c3b5",
+            "c6b4",
+            "a2b1",
+            "c7c6",
+            "b5d4",
+            "e6e5",
+            "h2h3",
+            "g4h5",
+            "d4f5",
+            "h5f3",
+            "d1f3",
+            "g7g6"
+          ],
+          "pv_san": [
+            "Nb5",
+            "Nb4",
+            "Bb1",
+            "c6",
+            "Nbd4",
+            "e5",
+            "h3",
+            "Bh5",
+            "Nf5",
+            "Bxf3",
+            "Qxf3",
+            "g6"
+          ],
+          "depth": 23,
+          "nodes": 3644395
+        },
+        {
+          "score": {
+            "cp": -368,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "h2h4",
+            "c6d4",
+            "c3b5",
+            "d4f5",
+            "d3d4",
+            "c5a4",
+            "c2c4",
+            "a4b6",
+            "c4d5",
+            "f8b4",
+            "c1d2",
+            "e6d5"
+          ],
+          "pv_san": [
+            "h4",
+            "Nd4",
+            "Nb5",
+            "Nf5",
+            "d4",
+            "Nxa4",
+            "c4",
+            "Nb6",
+            "cxd5",
+            "Bb4+",
+            "Bd2",
+            "exd5"
+          ],
+          "depth": 23,
+          "nodes": 3644395
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -813,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "c1g5",
+          "g4f3",
+          "d1d2",
+          "f7f6",
+          "g5f4",
+          "f3h5",
+          "d3d4",
+          "c5a6",
+          "d2e3",
+          "d8e7",
+          "e1g1",
+          "h5f7"
+        ],
+        "pv_san": [
+          "Bg5",
+          "Bxf3",
+          "Qd2",
+          "f6",
+          "Bf4",
+          "Bh5",
+          "d4",
+          "Na6",
+          "Qe3",
+          "Qe7",
+          "O-O",
+          "Bf7"
+        ],
+        "depth": 28,
+        "nodes": 3315220
+      },
+      "metrics": {
+        "cp_loss": 578,
+        "expectation_loss": 0.0005,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0005,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 18,
+      "label": "9...Be7",
+      "fen": "r2qkb1r/1pp2ppp/2n1p3/p1np2B1/P5b1/2NP1N2/BPP2PPP/R2QK2R b KQkq - 1 9",
+      "candidates": [
+        {
+          "score": {
+            "cp": -812,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g4f3",
+            "d1d2",
+            "f7f6",
+            "g5f4",
+            "f3g2",
+            "h1g1",
+            "g7g5",
+            "d3d4",
+            "c5e4",
+            "d2e2",
+            "c6d4",
+            "e2h5"
+          ],
+          "pv_san": [
+            "Bxf3",
+            "Qd2",
+            "f6",
+            "Bf4",
+            "Bxg2",
+            "Rg1",
+            "g5",
+            "d4",
+            "Ne4",
+            "Qe2",
+            "Nxd4",
+            "Qh5+"
+          ],
+          "depth": 23,
+          "nodes": 3789539
+        },
+        {
+          "score": {
+            "cp": -433,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d8g5",
+            "f3g5",
+            "g4d1",
+            "a1d1",
+            "c6d4",
+            "c3b5",
+            "d4b5",
+            "a4b5",
+            "f8e7",
+            "g5f3",
+            "a5a4",
+            "d1b1"
+          ],
+          "pv_san": [
+            "Qxg5",
+            "Nxg5",
+            "Bxd1",
+            "Rxd1",
+            "Nd4",
+            "Nb5",
+            "Nxb5",
+            "axb5",
+            "Be7",
+            "Nf3",
+            "a4",
+            "Rb1"
+          ],
+          "depth": 23,
+          "nodes": 3789539
+        },
+        {
+          "score": {
+            "cp": -364,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "f8e7",
+            "g5f4",
+            "c6d4",
+            "c3b5",
+            "g4f3",
+            "g2f3",
+            "d4b5",
+            "a4b5",
+            "d8d7",
+            "e1g1",
+            "e8g8",
+            "d3d4"
+          ],
+          "pv_san": [
+            "Be7",
+            "Bf4",
+            "Nd4",
+            "Nb5",
+            "Bxf3",
+            "gxf3",
+            "Nxb5",
+            "axb5",
+            "Qd7",
+            "O-O",
+            "O-O",
+            "d4"
+          ],
+          "depth": 23,
+          "nodes": 3789539
+        },
+        {
+          "score": {
+            "cp": -346,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d8d7",
+            "c3b5"
+          ],
+          "pv_san": [
+            "Qd7",
+            "Nb5"
+          ],
+          "depth": 23,
+          "nodes": 3789539
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -364,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "f8e7",
+          "g5f4",
+          "c6d4",
+          "c3b5",
+          "g4f3",
+          "g2f3",
+          "d4b5",
+          "a4b5",
+          "d8d7",
+          "e1g1",
+          "e8g8",
+          "d3d4"
+        ],
+        "pv_san": [
+          "Be7",
+          "Bf4",
+          "Nd4",
+          "Nb5",
+          "Bxf3",
+          "gxf3",
+          "Nxb5",
+          "axb5",
+          "Qd7",
+          "O-O",
+          "O-O",
+          "d4"
+        ],
+        "depth": 23,
+        "nodes": 3789539
+      },
+      "metrics": {
+        "cp_loss": 448,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 22,
+      "label": "11...Bxf3",
+      "fen": "r3k2r/1pp1qppp/2n1p3/p1np4/P5b1/2NP1N1P/BPP2PP1/R2QK2R b KQkq - 0 11",
+      "candidates": [
+        {
+          "score": {
+            "cp": -457,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g4h5",
+            "g2g4",
+            "h5g6",
+            "d1e2",
+            "e8c8",
+            "f3e5",
+            "c6e5",
+            "e2e5",
+            "f7f6",
+            "e5g3",
+            "c8b8",
+            "f2f4"
+          ],
+          "pv_san": [
+            "Bh5",
+            "g4",
+            "Bg6",
+            "Qe2",
+            "O-O-O",
+            "Ne5",
+            "Nxe5",
+            "Qxe5",
+            "f6",
+            "Qg3",
+            "Kb8",
+            "f4"
+          ],
+          "depth": 22,
+          "nodes": 3536687
+        },
+        {
+          "score": {
+            "cp": -353,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g4f3",
+            "d1f3",
+            "c6d4",
+            "f3d1",
+            "c7c6",
+            "e1g1",
+            "e7f6",
+            "c3b1",
+            "e6e5",
+            "c2c4",
+            "d5c4",
+            "a2c4"
+          ],
+          "pv_san": [
+            "Bxf3",
+            "Qxf3",
+            "Nd4",
+            "Qd1",
+            "c6",
+            "O-O",
+            "Qf6",
+            "Nb1",
+            "e5",
+            "c4",
+            "dxc4",
+            "Bxc4"
+          ],
+          "depth": 22,
+          "nodes": 3536687
+        },
+        {
+          "score": {
+            "cp": -238,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g4f5",
+            "e1g1",
+            "e8c8",
+            "c3b5",
+            "d5d4",
+            "d1d2",
+            "e7f6",
+            "d2g5",
+            "d8d7",
+            "g5f6",
+            "g7f6",
+            "a2c4"
+          ],
+          "pv_san": [
+            "Bf5",
+            "O-O",
+            "O-O-O",
+            "Nb5",
+            "d4",
+            "Qd2",
+            "Qf6",
+            "Qg5",
+            "Rd7",
+            "Qxf6",
+            "gxf6",
+            "Bc4"
+          ],
+          "depth": 22,
+          "nodes": 3536687
+        },
+        {
+          "score": {
+            "cp": -189,
+            "mate": null,
+            "expectation_white": 0.003
+          },
+          "pv_uci": [
+            "d5d4",
+            "h3g4",
+            "d4c3",
+            "b2c3",
+            "c5a4",
+            "d1d2",
+            "e7a3",
+            "e1g1",
+            "a3c3",
+            "d2e3",
+            "a4b6",
+            "e3f4"
+          ],
+          "pv_san": [
+            "d4",
+            "hxg4",
+            "dxc3",
+            "bxc3",
+            "Nxa4",
+            "Qd2",
+            "Qa3",
+            "O-O",
+            "Qxc3",
+            "Qe3",
+            "Nb6",
+            "Qf4"
+          ],
+          "depth": 22,
+          "nodes": 3536687
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -353,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "g4f3",
+          "d1f3",
+          "c6d4",
+          "f3d1",
+          "c7c6",
+          "e1g1",
+          "e7f6",
+          "c3b1",
+          "e6e5",
+          "c2c4",
+          "d5c4",
+          "a2c4"
+        ],
+        "pv_san": [
+          "Bxf3",
+          "Qxf3",
+          "Nd4",
+          "Qd1",
+          "c6",
+          "O-O",
+          "Qf6",
+          "Nb1",
+          "e5",
+          "c4",
+          "dxc4",
+          "Bxc4"
+        ],
+        "depth": 22,
+        "nodes": 3536687
+      },
+      "metrics": {
+        "cp_loss": 104,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 26,
+      "label": "13...O-O-O",
+      "fen": "r3k2r/1pp1qppp/4p3/p1np4/P2n4/2NP3P/BPP2PP1/R2QK2R b KQkq - 2 13",
+      "candidates": [
+        {
+          "score": {
+            "cp": -347,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "c7c6",
+            "e1g1",
+            "e7f6",
+            "d1d2",
+            "h7h5",
+            "a1e1",
+            "e8f8",
+            "b2b3",
+            "g7g6",
+            "c3e2",
+            "d4e2",
+            "e1e2"
+          ],
+          "pv_san": [
+            "c6",
+            "O-O",
+            "Qf6",
+            "Qd2",
+            "h5",
+            "Rae1",
+            "Kf8",
+            "b3",
+            "g6",
+            "Ne2",
+            "Nxe2+",
+            "Rxe2"
+          ],
+          "depth": 22,
+          "nodes": 2997612
+        },
+        {
+          "score": {
+            "cp": -341,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e7f6",
+            "e1g1",
+            "c7c6",
+            "c3b1",
+            "d4f5",
+            "c2c3",
+            "e6e5",
+            "d3d4",
+            "e5d4",
+            "f1e1",
+            "e8d8",
+            "c3c4"
+          ],
+          "pv_san": [
+            "Qf6",
+            "O-O",
+            "c6",
+            "Nb1",
+            "Nf5",
+            "c3",
+            "e5",
+            "d4",
+            "exd4",
+            "Re1+",
+            "Kd8",
+            "c4"
+          ],
+          "depth": 22,
+          "nodes": 2997612
+        },
+        {
+          "score": {
+            "cp": -322,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e7d6",
+            "e1g1",
+            "e8g8",
+            "c3b5",
+            "d4b5",
+            "a4b5",
+            "d6b6",
+            "c2c4",
+            "d5d4",
+            "f2f4",
+            "b6d6",
+            "d1f3"
+          ],
+          "pv_san": [
+            "Qd6",
+            "O-O",
+            "O-O",
+            "Nb5",
+            "Nxb5",
+            "axb5",
+            "Qb6",
+            "c4",
+            "d4",
+            "f4",
+            "Qd6",
+            "Qf3"
+          ],
+          "depth": 22,
+          "nodes": 2997612
+        },
+        {
+          "score": {
+            "cp": -320,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e8g8",
+            "e1g1",
+            "c7c6",
+            "d1d2",
+            "e6e5",
+            "f1e1",
+            "e7f6",
+            "c3e2",
+            "d4f5",
+            "e2g3",
+            "f5g3",
+            "f2g3"
+          ],
+          "pv_san": [
+            "O-O",
+            "O-O",
+            "c6",
+            "Qd2",
+            "e5",
+            "Rfe1",
+            "Qf6",
+            "Ne2",
+            "Nf5",
+            "Ng3",
+            "Nxg3",
+            "fxg3"
+          ],
+          "depth": 22,
+          "nodes": 2997612
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -306,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "e8c8",
+          "e1g1",
+          "e7f6",
+          "d1d2",
+          "h8g8",
+          "c3b5",
+          "b7b6",
+          "f1b1",
+          "g7g5",
+          "b5d4",
+          "f6d4",
+          "g2g3"
+        ],
+        "pv_san": [
+          "O-O-O",
+          "O-O",
+          "Qf6",
+          "Qd2",
+          "Rhg8",
+          "Nb5",
+          "b6",
+          "Rfb1",
+          "g5",
+          "Nxd4",
+          "Qxd4",
+          "g3"
+        ],
+        "depth": 24,
+        "nodes": 4002562
+      },
+      "metrics": {
+        "cp_loss": 41,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 28,
+      "label": "14...Nxb5",
+      "fen": "2kr3r/1pp1qppp/4p3/pNnp4/P2n4/3P3P/BPP2PP1/R2QK2R b KQ - 4 14",
+      "candidates": [
+        {
+          "score": {
+            "cp": -347,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e7f6",
+            "c2c3",
+            "f6e5",
+            "e1f1",
+            "d4f5",
+            "f1g1",
+            "e5f4",
+            "a2b1",
+            "c7c6",
+            "b5a3",
+            "e6e5",
+            "d1g4"
+          ],
+          "pv_san": [
+            "Qf6",
+            "c3",
+            "Qe5+",
+            "Kf1",
+            "Nf5",
+            "Kg1",
+            "Qf4",
+            "Bb1",
+            "c6",
+            "Na3",
+            "e5",
+            "Qg4"
+          ],
+          "depth": 22,
+          "nodes": 3831586
+        },
+        {
+          "score": {
+            "cp": -321,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d4c6",
+            "e1g1",
+            "c5a4",
+            "c2c3",
+            "a4b6",
+            "d3d4",
+            "g7g5",
+            "a2b1",
+            "h7h5",
+            "b1d3",
+            "g5g4",
+            "h3h4"
+          ],
+          "pv_san": [
+            "Nc6",
+            "O-O",
+            "Nxa4",
+            "c3",
+            "Nb6",
+            "d4",
+            "g5",
+            "Bb1",
+            "h5",
+            "Bd3",
+            "g4",
+            "h4"
+          ],
+          "depth": 22,
+          "nodes": 3831586
+        },
+        {
+          "score": {
+            "cp": -302,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d4f5",
+            "d3d4",
+            "c5e4",
+            "e1g1",
+            "h7h5",
+            "d1e1",
+            "c7c6",
+            "c2c4",
+            "e7b4",
+            "b5c3",
+            "f5d4",
+            "c4d5"
+          ],
+          "pv_san": [
+            "Nf5",
+            "d4",
+            "Ne4",
+            "O-O",
+            "h5",
+            "Qe1",
+            "c6",
+            "c4",
+            "Qb4",
+            "Nc3",
+            "Nxd4",
+            "cxd5"
+          ],
+          "depth": 21,
+          "nodes": 3831586
+        },
+        {
+          "score": {
+            "cp": -245,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d4b5",
+            "a4b5",
+            "e7d7",
+            "b5b6",
+            "c7b6",
+            "e1g1",
+            "d7b5",
+            "d1c1",
+            "c8b8",
+            "c1f4",
+            "b8a7",
+            "f1b1"
+          ],
+          "pv_san": [
+            "Nxb5",
+            "axb5",
+            "Qd7",
+            "b6",
+            "cxb6",
+            "O-O",
+            "Qb5",
+            "Qc1",
+            "Kb8",
+            "Qf4+",
+            "Ka7",
+            "Rfb1"
+          ],
+          "depth": 21,
+          "nodes": 3831586
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -245,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "d4b5",
+          "a4b5",
+          "e7d7",
+          "b5b6",
+          "c7b6",
+          "e1g1",
+          "d7b5",
+          "d1c1",
+          "c8b8",
+          "c1f4",
+          "b8a7",
+          "f1b1"
+        ],
+        "pv_san": [
+          "Nxb5",
+          "axb5",
+          "Qd7",
+          "b6",
+          "cxb6",
+          "O-O",
+          "Qb5",
+          "Qc1",
+          "Kb8",
+          "Qf4+",
+          "Ka7",
+          "Rfb1"
+        ],
+        "depth": 21,
+        "nodes": 3831586
+      },
+      "metrics": {
+        "cp_loss": 102,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 36,
+      "label": "18...g6",
+      "fen": "2kr3r/1p1q1ppp/1p2p3/2np4/1p4Q1/3P3P/B1P2PP1/R3K2R b KQ - 1 18",
+      "candidates": [
+        {
+          "score": {
+            "cp": -385,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "c5a6",
+            "e1g1",
+            "h8g8",
+            "a2b3",
+            "c8b8",
+            "g4e2",
+            "d8c8",
+            "d3d4",
+            "d7d6",
+            "b3a4",
+            "c8c3",
+            "a4b5"
+          ],
+          "pv_san": [
+            "Na6",
+            "O-O",
+            "Rhg8",
+            "Bb3",
+            "Kb8",
+            "Qe2",
+            "Rc8",
+            "d4",
+            "Qd6",
+            "Ba4",
+            "Rc3",
+            "Bb5"
+          ],
+          "depth": 23,
+          "nodes": 4513699
+        },
+        {
+          "score": {
+            "cp": -340,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7a4",
+            "d3d4",
+            "b4b3",
+            "d4c5",
+            "a4a5",
+            "e1e2",
+            "a5a6",
+            "e2f3",
+            "b3a2",
+            "c5b6",
+            "a6a3",
+            "f3e2"
+          ],
+          "pv_san": [
+            "Qa4",
+            "d4",
+            "b3",
+            "dxc5",
+            "Qa5+",
+            "Ke2",
+            "Qa6+",
+            "Kf3",
+            "bxa2",
+            "cxb6",
+            "Qa3+",
+            "Ke2"
+          ],
+          "depth": 23,
+          "nodes": 4513699
+        },
+        {
+          "score": {
+            "cp": -306,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7c7",
+            "e1g1"
+          ],
+          "pv_san": [
+            "Qc7",
+            "O-O"
+          ],
+          "depth": 23,
+          "nodes": 4513699
+        },
+        {
+          "score": {
+            "cp": -309,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7d6",
+            "e1g1",
+            "c5a6",
+            "g4g7",
+            "d6f4",
+            "g7g3",
+            "f4g3",
+            "f2g3",
+            "f7f5",
+            "f1f4",
+            "h7h5",
+            "a2b3"
+          ],
+          "pv_san": [
+            "Qd6",
+            "O-O",
+            "Na6",
+            "Qxg7",
+            "Qf4",
+            "Qg3",
+            "Qxg3",
+            "fxg3",
+            "f5",
+            "Rf4",
+            "h5",
+            "Bb3"
+          ],
+          "depth": 22,
+          "nodes": 4513699
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -200,
+          "mate": null,
+          "expectation_white": 0.0015
+        },
+        "pv_uci": [
+          "g7g6",
+          "g4b4"
+        ],
+        "pv_san": [
+          "g6",
+          "Qxb4"
+        ],
+        "depth": 25,
+        "nodes": 4419707
+      },
+      "metrics": {
+        "cp_loss": 185,
+        "expectation_loss": 0.0015,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 37,
+      "label": "19.Qg3",
+      "fen": "2kr3r/1p1q1p1p/1p2p1p1/2np4/1p4Q1/3P3P/B1P2PP1/R3K2R w KQ - 0 19",
+      "candidates": [
+        {
+          "score": {
+            "cp": -189,
+            "mate": null,
+            "expectation_white": 0.003
+          },
+          "pv_uci": [
+            "g4b4",
+            "d7d6",
+            "e1g1",
+            "c8d7",
+            "a1b1",
+            "d8a8",
+            "a2b3",
+            "h7h5",
+            "b4h4",
+            "h8c8",
+            "h4f6",
+            "d6e7"
+          ],
+          "pv_san": [
+            "Qxb4",
+            "Qd6",
+            "O-O",
+            "Kd7",
+            "Rab1",
+            "Ra8",
+            "Bb3",
+            "h5",
+            "Qh4",
+            "Rhc8",
+            "Qf6",
+            "Qe7"
+          ],
+          "depth": 21,
+          "nodes": 4416213
+        },
+        {
+          "score": {
+            "cp": -347,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e1g1",
+            "c5a6",
+            "a2b3",
+            "h8f8",
+            "g4e2",
+            "b6b5",
+            "a1a5",
+            "d7c6",
+            "f1a1",
+            "f7f6",
+            "d3d4",
+            "a6c7"
+          ],
+          "pv_san": [
+            "O-O",
+            "Na6",
+            "Bb3",
+            "Rhf8",
+            "Qe2",
+            "b5",
+            "Ra5",
+            "Qc6",
+            "Rfa1",
+            "f6",
+            "d4",
+            "Nc7"
+          ],
+          "depth": 21,
+          "nodes": 4416213
+        },
+        {
+          "score": {
+            "cp": -352,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "a2b3",
+            "c5a6",
+            "e1g1",
+            "h8f8",
+            "f1b1",
+            "d7c6",
+            "d3d4",
+            "b6b5",
+            "a1a5",
+            "a6c7",
+            "g4h4",
+            "h7h5"
+          ],
+          "pv_san": [
+            "Bb3",
+            "Na6",
+            "O-O",
+            "Rhf8",
+            "Rfb1",
+            "Qc6",
+            "d4",
+            "b5",
+            "Ra5",
+            "Nc7",
+            "Qh4",
+            "h5"
+          ],
+          "depth": 21,
+          "nodes": 4416213
+        },
+        {
+          "score": {
+            "cp": -360,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g4d4",
+            "c5a6"
+          ],
+          "pv_san": [
+            "Qd4",
+            "Na6"
+          ],
+          "depth": 21,
+          "nodes": 4416213
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -475,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "g4g3",
+          "d7c7",
+          "g3e3",
+          "c5a4",
+          "e1g1",
+          "a4c3",
+          "f1e1",
+          "c7d6",
+          "a2b3",
+          "c8b8",
+          "e3d4",
+          "h8e8"
+        ],
+        "pv_san": [
+          "Qg3",
+          "Qc7",
+          "Qe3",
+          "Na4",
+          "O-O",
+          "Nc3",
+          "Rfe1",
+          "Qd6",
+          "Bb3",
+          "Kb8",
+          "Qd4",
+          "Rhe8"
+        ],
+        "depth": 26,
+        "nodes": 4335932
+      },
+      "metrics": {
+        "cp_loss": 286,
+        "expectation_loss": 0.003,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.003,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 38,
+      "label": "19...f5",
+      "fen": "2kr3r/1p1q1p1p/1p2p1p1/2np4/1p6/3P2QP/B1P2PP1/R3K2R b KQ - 1 19",
+      "candidates": [
+        {
+          "score": {
+            "cp": -487,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7d6",
+            "g3d6",
+            "d8d6",
+            "a2d5",
+            "c8b8",
+            "d5c4",
+            "b4b3",
+            "c2b3",
+            "c5d3",
+            "e1e2",
+            "h8d8",
+            "h3h4"
+          ],
+          "pv_san": [
+            "Qd6",
+            "Qxd6",
+            "Rxd6",
+            "Bxd5",
+            "Kb8",
+            "Bc4",
+            "b3",
+            "cxb3",
+            "Nxd3+",
+            "Ke2",
+            "Rhd8",
+            "h4"
+          ],
+          "depth": 24,
+          "nodes": 4808584
+        },
+        {
+          "score": {
+            "cp": -445,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "c5a6",
+            "e1g1",
+            "d7c7",
+            "g3h4",
+            "d8d6",
+            "a2b3",
+            "b6b5",
+            "h4h6",
+            "f7f6",
+            "f1e1",
+            "c8b8",
+            "e1e3"
+          ],
+          "pv_san": [
+            "Na6",
+            "O-O",
+            "Qc7",
+            "Qh4",
+            "Rd6",
+            "Bb3",
+            "b5",
+            "Qh6",
+            "f6",
+            "Rfe1",
+            "Kb8",
+            "Re3"
+          ],
+          "depth": 24,
+          "nodes": 4808584
+        },
+        {
+          "score": {
+            "cp": -442,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "b6b5",
+            "g3e3",
+            "d7c7",
+            "a2b3",
+            "c8b8",
+            "e1g1",
+            "c5a6",
+            "a1a2",
+            "d8d6",
+            "f1a1",
+            "h8d8",
+            "a2a5"
+          ],
+          "pv_san": [
+            "b5",
+            "Qe3",
+            "Qc7",
+            "Bb3",
+            "Kb8",
+            "O-O",
+            "Na6",
+            "Ra2",
+            "Rd6",
+            "Rfa1",
+            "Rhd8",
+            "Ra5"
+          ],
+          "depth": 24,
+          "nodes": 4808584
+        },
+        {
+          "score": {
+            "cp": -435,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7c7",
+            "g3g5",
+            "c5a6",
+            "e1g1",
+            "d8d6",
+            "a2b3",
+            "b6b5",
+            "a1a2",
+            "h8d8",
+            "f1a1",
+            "c7c3",
+            "g5h4"
+          ],
+          "pv_san": [
+            "Qc7",
+            "Qg5",
+            "Na6",
+            "O-O",
+            "Rd6",
+            "Bb3",
+            "b5",
+            "Ra2",
+            "Rhd8",
+            "Rfa1",
+            "Qc3",
+            "Qh4"
+          ],
+          "depth": 24,
+          "nodes": 4808584
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -373,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "f7f5",
+          "e1g1",
+          "d7d6",
+          "g3e3",
+          "h8e8",
+          "a2b3",
+          "e6e5",
+          "a1a8",
+          "c8c7",
+          "a8d8",
+          "e8d8",
+          "d3d4"
+        ],
+        "pv_san": [
+          "f5",
+          "O-O",
+          "Qd6",
+          "Qe3",
+          "Rhe8",
+          "Bb3",
+          "e5",
+          "Ra8+",
+          "Kc7",
+          "Rxd8",
+          "Rxd8",
+          "d4"
+        ],
+        "depth": 26,
+        "nodes": 4469537
+      },
+      "metrics": {
+        "cp_loss": 114,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 39,
+      "label": "20.Bxd5",
+      "fen": "2kr3r/1p1q3p/1p2p1p1/2np1p2/1p6/3P2QP/B1P2PP1/R3K2R w KQ - 0 20",
+      "candidates": [
+        {
+          "score": {
+            "cp": -384,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e1g1",
+            "d7d6",
+            "g3e3",
+            "h8e8",
+            "e3d2",
+            "c5a6",
+            "a2b3",
+            "e6e5",
+            "d3d4",
+            "d6c6",
+            "d4e5",
+            "e8e5"
+          ],
+          "pv_san": [
+            "O-O",
+            "Qd6",
+            "Qe3",
+            "Rhe8",
+            "Qd2",
+            "Na6",
+            "Bb3",
+            "e5",
+            "d4",
+            "Qc6",
+            "dxe5",
+            "Rxe5"
+          ],
+          "depth": 24,
+          "nodes": 4719959
+        },
+        {
+          "score": {
+            "cp": -385,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g3e3",
+            "h8e8",
+            "e1g1",
+            "d7d6",
+            "e3d2",
+            "c5a6",
+            "a2b3",
+            "e6e5",
+            "c2c3",
+            "b4c3",
+            "d2c3",
+            "c8b8"
+          ],
+          "pv_san": [
+            "Qe3",
+            "Rhe8",
+            "O-O",
+            "Qd6",
+            "Qd2",
+            "Na6",
+            "Bb3",
+            "e5",
+            "c3",
+            "bxc3",
+            "Qxc3+",
+            "Kb8"
+          ],
+          "depth": 24,
+          "nodes": 4719959
+        },
+        {
+          "score": {
+            "cp": -431,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g3g5",
+            "c8b8",
+            "e1g1",
+            "d7c7",
+            "a2b3",
+            "b6b5",
+            "g5d2",
+            "c5a6",
+            "d3d4",
+            "d8d6",
+            "d2e2",
+            "d6b6"
+          ],
+          "pv_san": [
+            "Qg5",
+            "Kb8",
+            "O-O",
+            "Qc7",
+            "Bb3",
+            "b5",
+            "Qd2",
+            "Na6",
+            "d4",
+            "Rd6",
+            "Qe2",
+            "Rb6"
+          ],
+          "depth": 24,
+          "nodes": 4719959
+        },
+        {
+          "score": {
+            "cp": -473,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "g3h4",
+            "c5a6",
+            "e1g1",
+            "e6e5",
+            "f1c1",
+            "c8b8",
+            "d3d4",
+            "e5e4",
+            "c2c4",
+            "b4c3",
+            "c1c3",
+            "b6b5"
+          ],
+          "pv_san": [
+            "Qh4",
+            "Na6",
+            "O-O",
+            "e5",
+            "Rfc1",
+            "Kb8",
+            "d4",
+            "e4",
+            "c4",
+            "bxc3",
+            "Rxc3",
+            "b5"
+          ],
+          "depth": 24,
+          "nodes": 4719959
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -752,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "a2d5",
+          "d7d5",
+          "a1a8",
+          "c8d7",
+          "a8d8",
+          "h8d8",
+          "e1g1",
+          "d5d4",
+          "g3g5",
+          "d8e8",
+          "g5h6",
+          "e8e7"
+        ],
+        "pv_san": [
+          "Bxd5",
+          "Qxd5",
+          "Ra8+",
+          "Kd7",
+          "Rxd8+",
+          "Rxd8",
+          "O-O",
+          "Qd4",
+          "Qg5",
+          "Re8",
+          "Qh6",
+          "Re7"
+        ],
+        "depth": 29,
+        "nodes": 4275606
+      },
+      "metrics": {
+        "cp_loss": 368,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 42,
+      "label": "21...Kd7",
+      "fen": "2kr3r/1p5p/1p2p1p1/2nq1p2/1p6/3P2QP/2P2PP1/R4RK1 b - - 1 21",
+      "candidates": [
+        {
+          "score": {
+            "cp": -748,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "c5a6",
+            "f1e1",
+            "h8e8",
+            "e1e5",
+            "d5c6",
+            "g3e3",
+            "d8d5",
+            "a1e1",
+            "d5c5",
+            "e5e6",
+            "c6e6",
+            "e3e6"
+          ],
+          "pv_san": [
+            "Na6",
+            "Rfe1",
+            "Rhe8",
+            "Re5",
+            "Qc6",
+            "Qe3",
+            "Rd5",
+            "Re1",
+            "Rc5",
+            "Rxe6",
+            "Qxe6",
+            "Qxe6+"
+          ],
+          "depth": 22,
+          "nodes": 4368702
+        },
+        {
+          "score": {
+            "cp": -739,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d5d4",
+            "f1e1",
+            "h8e8",
+            "a1a8",
+            "c8d7",
+            "a8d8",
+            "e8d8",
+            "e1e5",
+            "d4d6",
+            "g3e3",
+            "d7c7",
+            "e3g3"
+          ],
+          "pv_san": [
+            "Qd4",
+            "Rfe1",
+            "Rhe8",
+            "Ra8+",
+            "Kd7",
+            "Rxd8+",
+            "Rxd8",
+            "Re5",
+            "Qd6",
+            "Qe3",
+            "Kc7",
+            "Qg3"
+          ],
+          "depth": 22,
+          "nodes": 4368702
+        },
+        {
+          "score": {
+            "cp": -691,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e6e5",
+            "f1e1",
+            "d5d4",
+            "a1a8",
+            "c8d7",
+            "a8d8",
+            "h8d8",
+            "e1e5",
+            "d8a8",
+            "e5e3",
+            "d4d6",
+            "g3e5"
+          ],
+          "pv_san": [
+            "e5",
+            "Rfe1",
+            "Qd4",
+            "Ra8+",
+            "Kd7",
+            "Rxd8+",
+            "Rxd8",
+            "Rxe5",
+            "Ra8",
+            "Re3",
+            "Qd6",
+            "Qe5"
+          ],
+          "depth": 22,
+          "nodes": 4368702
+        },
+        {
+          "score": {
+            "cp": -671,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "c8d7",
+            "g3e3",
+            "e6e5",
+            "f1b1",
+            "f5f4",
+            "e3d2",
+            "d5d4",
+            "d2e1",
+            "c5a6",
+            "a1a6",
+            "b7a6",
+            "b1b4"
+          ],
+          "pv_san": [
+            "Kd7",
+            "Qe3",
+            "e5",
+            "Rfb1",
+            "f4",
+            "Qd2",
+            "Qd4",
+            "Qe1",
+            "Na6",
+            "Rxa6",
+            "bxa6",
+            "Rxb4"
+          ],
+          "depth": 22,
+          "nodes": 4368702
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -671,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "c8d7",
+          "g3e3",
+          "e6e5",
+          "f1b1",
+          "f5f4",
+          "e3d2",
+          "d5d4",
+          "d2e1",
+          "c5a6",
+          "a1a6",
+          "b7a6",
+          "b1b4"
+        ],
+        "pv_san": [
+          "Kd7",
+          "Qe3",
+          "e5",
+          "Rfb1",
+          "f4",
+          "Qd2",
+          "Qd4",
+          "Qe1",
+          "Na6",
+          "Rxa6",
+          "bxa6",
+          "Rxb4"
+        ],
+        "depth": 22,
+        "nodes": 4368702
+      },
+      "metrics": {
+        "cp_loss": 77,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 56,
+      "label": "28...Ke7",
+      "fen": "2r4r/1p1k3p/1p2p3/5p2/1p2P2p/7P/2P3P1/3R3K b - - 0 28",
+      "candidates": [
+        {
+          "score": {
+            "cp": -1055,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7c6",
+            "e4f5",
+            "e6f5",
+            "d1f1",
+            "h8f8",
+            "f1f4",
+            "c6b5",
+            "f4f2",
+            "c8c3",
+            "h1h2",
+            "f8c8",
+            "f2f5"
+          ],
+          "pv_san": [
+            "Kc6",
+            "exf5",
+            "exf5",
+            "Rf1",
+            "Rhf8",
+            "Rf4",
+            "Kb5",
+            "Rf2",
+            "Rc3",
+            "Kh2",
+            "Rfc8",
+            "Rxf5+"
+          ],
+          "depth": 25,
+          "nodes": 6832908
+        },
+        {
+          "score": {
+            "cp": -861,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7e7",
+            "e4f5",
+            "h8f8",
+            "d1d4",
+            "c8c2",
+            "d4b4",
+            "f8f5",
+            "b4h4",
+            "h7h5",
+            "h4d4",
+            "f5d5",
+            "d4f4"
+          ],
+          "pv_san": [
+            "Ke7",
+            "exf5",
+            "Rhf8",
+            "Rd4",
+            "Rxc2",
+            "Rxb4",
+            "Rxf5",
+            "Rxh4",
+            "h5",
+            "Rd4",
+            "Rd5",
+            "Rf4"
+          ],
+          "depth": 25,
+          "nodes": 6832908
+        },
+        {
+          "score": {
+            "cp": -855,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7c7",
+            "e4f5",
+            "e6f5",
+            "d1d5",
+            "c7b8",
+            "d5d4",
+            "c8c2",
+            "d4b4",
+            "b8c7",
+            "b4h4",
+            "b6b5",
+            "h4h5"
+          ],
+          "pv_san": [
+            "Kc7",
+            "exf5",
+            "exf5",
+            "Rd5",
+            "Kb8",
+            "Rd4",
+            "Rxc2",
+            "Rxb4",
+            "Kc7",
+            "Rxh4",
+            "b5",
+            "Rh5"
+          ],
+          "depth": 25,
+          "nodes": 6832908
+        },
+        {
+          "score": {
+            "cp": -850,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "d7e8",
+            "d1d4",
+            "c8c2",
+            "d4b4",
+            "f5e4",
+            "b4b6",
+            "e8e7",
+            "b6b3",
+            "h8a8",
+            "h1h2",
+            "a8g8",
+            "h2h1"
+          ],
+          "pv_san": [
+            "Ke8",
+            "Rd4",
+            "Rxc2",
+            "Rxb4",
+            "fxe4",
+            "Rxb6",
+            "Ke7",
+            "Rb3",
+            "Ra8",
+            "Kh2",
+            "Rg8",
+            "Kh1"
+          ],
+          "depth": 25,
+          "nodes": 6832908
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -861,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "d7e7",
+          "e4f5",
+          "h8f8",
+          "d1d4",
+          "c8c2",
+          "d4b4",
+          "f8f5",
+          "b4h4",
+          "h7h5",
+          "h4d4",
+          "f5d5",
+          "d4f4"
+        ],
+        "pv_san": [
+          "Ke7",
+          "exf5",
+          "Rhf8",
+          "Rd4",
+          "Rxc2",
+          "Rxb4",
+          "Rxf5",
+          "Rxh4",
+          "h5",
+          "Rd4",
+          "Rd5",
+          "Rf4"
+        ],
+        "depth": 25,
+        "nodes": 6832908
+      },
+      "metrics": {
+        "cp_loss": 194,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    },
+    {
+      "ply": 60,
+      "label": "30...Rg8",
+      "fen": "7r/1p2k2p/1p2P3/8/1p5p/7P/2r3P1/3R3K b - - 0 30",
+      "candidates": [
+        {
+          "score": {
+            "cp": -1798,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "h8d8",
+            "d1f1",
+            "b4b3",
+            "f1f7",
+            "e7e6",
+            "f7f1",
+            "b3b2",
+            "f1e1",
+            "e6d7",
+            "h1g1",
+            "c2c1",
+            "g1f2"
+          ],
+          "pv_san": [
+            "Rd8",
+            "Rf1",
+            "b3",
+            "Rf7+",
+            "Kxe6",
+            "Rf1",
+            "b2",
+            "Re1+",
+            "Kd7",
+            "Kg1",
+            "Rc1",
+            "Kf2"
+          ],
+          "depth": 27,
+          "nodes": 7718110
+        },
+        {
+          "score": {
+            "cp": -1775,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "b4b3",
+            "d1d7",
+            "e7e6",
+            "d7d4",
+            "b3b2",
+            "d4e4",
+            "e6d7",
+            "e4d4",
+            "d7c7",
+            "h1h2",
+            "h8g8",
+            "d4d1"
+          ],
+          "pv_san": [
+            "b3",
+            "Rd7+",
+            "Kxe6",
+            "Rd4",
+            "b2",
+            "Re4+",
+            "Kd7",
+            "Rd4+",
+            "Kc7",
+            "Kh2",
+            "Rg8",
+            "Rd1"
+          ],
+          "depth": 27,
+          "nodes": 7718110
+        },
+        {
+          "score": {
+            "cp": -963,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "e7e6",
+            "d1d4",
+            "b4b3",
+            "d4h4",
+            "c2c1",
+            "h1h2",
+            "b3b2",
+            "h4h6",
+            "e6d5",
+            "h6b6",
+            "b2b1q",
+            "b6b1"
+          ],
+          "pv_san": [
+            "Kxe6",
+            "Rd4",
+            "b3",
+            "Rxh4",
+            "Rc1+",
+            "Kh2",
+            "b2",
+            "Rh6+",
+            "Kd5",
+            "Rxb6",
+            "b1=Q",
+            "Rxb1"
+          ],
+          "depth": 27,
+          "nodes": 7718110
+        },
+        {
+          "score": {
+            "cp": -947,
+            "mate": null,
+            "expectation_white": 0.0
+          },
+          "pv_uci": [
+            "b6b5",
+            "d1d5",
+            "b4b3",
+            "d5b5",
+            "b3b2",
+            "b5b7",
+            "e7e6",
+            "b7b6",
+            "e6d7",
+            "h1g1",
+            "d7c7",
+            "b6b3"
+          ],
+          "pv_san": [
+            "b5",
+            "Rd5",
+            "b3",
+            "Rxb5",
+            "b2",
+            "Rxb7+",
+            "Kxe6",
+            "Rb6+",
+            "Kd7",
+            "Kg1",
+            "Kc7",
+            "Rb3"
+          ],
+          "depth": 26,
+          "nodes": 7718110
+        }
+      ],
+      "played": {
+        "score": {
+          "cp": -1136,
+          "mate": null,
+          "expectation_white": 0.0
+        },
+        "pv_uci": [
+          "h8g8",
+          "d1d7",
+          "e7e6",
+          "d7b7",
+          "c2c6",
+          "b7h7",
+          "b4b3",
+          "h7h6",
+          "e6d7",
+          "h6h7",
+          "d7c8",
+          "h7h4"
+        ],
+        "pv_san": [
+          "Rg8",
+          "Rd7+",
+          "Kxe6",
+          "Rxb7",
+          "Rc6",
+          "Rxh7",
+          "b3",
+          "Rh6+",
+          "Kd7",
+          "Rh7+",
+          "Kc8",
+          "Rxh4"
+        ],
+        "depth": 33,
+        "nodes": 7507795
+      },
+      "metrics": {
+        "cp_loss": 662,
+        "expectation_loss": 0.0,
+        "classification": "stable",
+        "reasons": []
+      },
+      "best_second_expectation_gap": 0.0,
+      "only_move_candidate": false
+    }
+  ]
+}
