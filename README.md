@@ -13,6 +13,7 @@ PGNをローカルのStockfishで解析し、Codex / Claude Codeで日本語の�
 - [lichess：AntonioRaimundo戦・黒番（2026年10月4日）](output/2026-10-04-antonioraimundo/article.md) — 局面図3枚付き。2...Nxe4のポーン得から勝ち切った一局で、見逃した9...Bxf3!と18...g6を振り返ります。
 - [lichess：AntonioRaimundo戦・白番（2026年10月4日、2局目）](output/2026-10-04-antonioraimundo-2/article.md) — 局面図4枚付き。約+7の優勢から12.O-O??でf7のビショップを失った場面と、ほぼ互角だった投了局面を振り返ります。
 - [lichess：Flordog戦・黒番（2026年10月7日）](output/2026-10-07-flordog/article.md) — 局面図3枚付き。2回見送った7...Nxd5と、13...f5!から取り込んだポーンが22...dxc1=Qでクイーンになるまでを振り返ります。
+- [lichess：ymoh1戦・黒番（2026年10月11日）](output/2026-10-11-ymoh1/article.md) — 局面図2枚付き。e6のポーンを残した8...f6?と、ビショップを取った直後に11.Qg6#を受けた10...gxf4??を振り返ります。
 
 解析結果と完成した解説は `output/<日付>-<相手>/`（例: `output/2026-09-20-evgen1y57/`）にまとめて保存します。対面の大会棋譜は `<日付>-<大会>-<相手>`、同じ日に同じ相手と複数局あるときは末尾に `-2` を付けます。完成記事は `article.md`、下書きは `draft.md` とし、局面図・PGN・解析JSONも同じ対局ディレクトリに置いて相対リンクで参照します。GitHub上でそのまま読めます。入力棋譜は `games/` に保存します。
 
